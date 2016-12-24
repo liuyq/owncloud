@@ -1,0 +1,22 @@
+1. select of directory to upload
+2. could select files more than 1000
+    12-24 17:05:48.028 2627-4717/? E/Cataloger: syncFile:/storage/emulated/0/owncloud/log/currentLog.txt
+    12-24 17:05:48.058 1160-1739/? E/JavaBinder: !!! FAILED BINDER TRANSACTION !!!  (parcel size = 793968)
+    12-24 17:05:48.064 1160-1739/? E/JavaBinder: *** Uncaught remote exception!  (Exceptions are not yet supported across processes.)
+                                             java.lang.RuntimeException: android.os.TransactionTooLargeException: data parcel size 793968 bytes
+                                                 at android.os.Parcel.writeException(Parcel.java:1499)
+                                                 at android.os.Binder.execTransact(Binder.java:464)
+                                              Caused by: android.os.TransactionTooLargeException: data parcel size 793968 bytes
+                                                 at android.os.BinderProxy.transactNative(Native Method)
+                                                 at android.os.BinderProxy.transact(Binder.java:511)
+                                                 at android.app.ApplicationThreadProxy.scheduleServiceArgs(ApplicationThreadNative.java:1028)
+                                                 at com.android.server.am.ActiveServices.sendServiceArgsLocked(ActiveServices.java:2052)
+                                                 at com.android.server.am.ActiveServices.bringUpServiceLocked(ActiveServices.java:1768)
+                                                 at com.android.server.am.ActiveServices.startServiceInnerLocked(ActiveServices.java:514)
+                                                 at com.android.server.am.ActiveServices.startServiceLocked(ActiveServices.java:501)
+                                                 at com.android.server.am.ActivityManagerService.startService(ActivityManagerService.java:19368)
+                                                 at android.app.ActivityManagerNative.onTransact(ActivityManagerNative.java:948)
+                                                 at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2827)
+                                                 at android.os.Binder.execTransact(Binder.java:458)
+3. change to use postgres or mysql instead of sqlite for the server side
+4. support for more owncloud instances

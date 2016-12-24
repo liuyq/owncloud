@@ -130,6 +130,7 @@ public class LocalFileListFragment extends ExtendedListFragment {
     }
 
     public int  selectAllFiles(boolean selectOrDeselect){
+        //Uncaught remote exception!  (Exceptions are not yet supported across processes.)
         int total = 0;
         for(int i=0; i<  mAdapter.getCount() && total < 1000; i++){
             File file = (File) mAdapter.getItem(i);
