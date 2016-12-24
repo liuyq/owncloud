@@ -78,6 +78,7 @@ public class UploadFilesActivity extends FileActivity implements
     private LocalFileListFragment mFileListFragment;
     private Button mCancelBtn;
     private Button mUploadBtn;
+    private Button mSelectAllBtn;
     private Account mAccountOnCreation;
     private DialogFragment mCurrentDialog;
 
@@ -123,6 +124,8 @@ public class UploadFilesActivity extends FileActivity implements
         mCancelBtn.setOnClickListener(this);
         mUploadBtn = (Button) findViewById(R.id.upload_files_btn_upload);
         mUploadBtn.setOnClickListener(this);
+        mSelectAllBtn = (Button) findViewById(R.id.upload_files_btn_select_all);
+        mSelectAllBtn.setOnClickListener(this);
 
         SharedPreferences appPreferences = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext());
@@ -326,6 +329,15 @@ public class UploadFilesActivity extends FileActivity implements
             
         } else if (v.getId() == R.id.upload_files_btn_upload) {
             new CheckAvailableSpaceTask().execute();
+        } else if (v.getId() == R.id.upload_files_btn_select_all) {
+            String text = "DeSelect";
+            boolean select= true;
+            if(((Button)v).getText().toString().toLowerCase().startsWith(("DeSelect").toLowerCase())) {
+                select = false;
+                text = "Select";
+            }
+            int tolal = mFileListFragment.selectAllFiles(select);
+            ((Button)v).setText(String.format("%s All(Total files: %d)", text, tolal));
         }
     }
 
