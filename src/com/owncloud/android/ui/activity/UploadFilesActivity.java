@@ -130,7 +130,7 @@ public class UploadFilesActivity extends FileActivity implements
         SharedPreferences appPreferences = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext());
 
-        Integer localBehaviour = appPreferences.getInt("prefs_uploader_behaviour", FileUploader.LOCAL_BEHAVIOUR_COPY);
+        Integer localBehaviour = appPreferences.getInt("prefs_uploader_behaviour", FileUploader.LOCAL_BEHAVIOUR_MOVE);
 
         mRadioBtnMoveFiles = (RadioButton) findViewById(R.id.upload_radio_move);
         if (localBehaviour == FileUploader.LOCAL_BEHAVIOUR_MOVE){
